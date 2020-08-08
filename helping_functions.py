@@ -204,6 +204,8 @@ def predict_move(l1,pl) :
     ll.append(pl)
     if ll[0]==0 and ll[1]==0 and ll[2]==0 and ll[3]==0 and ll[4]==1 and ll[5]==0 and ll[6]==0 and ll[7]==0 and ll[8]==0 and ll[9]==2 :
         return 0
+    if ll[0]==0 and ll[1]==0 and ll[2]==0 and ll[3]==0 and ll[4]==0 and ll[5]==0 and ll[6]==0 and ll[7]==0 and ll[8]==0 and ll[9]==1 :
+        return 4
     arr=loaded_model.predict(np.array([ll])) #prediction of best move
     result=np.where(arr==np.amax(arr))
     best_move=int(result[1][0])
