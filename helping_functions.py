@@ -223,6 +223,9 @@ def predict_move(l1,pl) :
         for j in range(3) :
             if l1[i][j]==" " :
                 poss_moves.append((i+1,j+1))
+    if len(poss_moves)==7 :
+        if l1[1][1]==" " :
+            return 4
     if l1[0][0]=="X" or l1[0][2]=="X" or l1[2][0]=="X" or l1[2][2]=="X" :
         if len(poss_moves)>6 :
             if l1[0][0]=="X" :
@@ -233,6 +236,7 @@ def predict_move(l1,pl) :
                 return 2
             if l1[2][2]=="X" :
                 return 0
+
     if len(poss_moves)>5 :
         rr=[]
         if l1[0][0]==" " :
