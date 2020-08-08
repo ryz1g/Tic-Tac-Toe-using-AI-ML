@@ -202,10 +202,6 @@ def predict_move(l1,pl) :
             if l1[i][j]=="O" :
                 ll.append(2)
     ll.append(pl)
-    if ll[0]==0 and ll[1]==0 and ll[2]==0 and ll[3]==0 and ll[4]==1 and ll[5]==0 and ll[6]==0 and ll[7]==0 and ll[8]==0 and ll[9]==2 :
-        return 0
-    if ll[0]==0 and ll[1]==0 and ll[2]==0 and ll[3]==0 and ll[4]==0 and ll[5]==0 and ll[6]==0 and ll[7]==0 and ll[8]==0 and ll[9]==1 :
-        return 4
     arr=loaded_model.predict(np.array([ll])) #prediction of best move
     result=np.where(arr==np.amax(arr))
     best_move=int(result[1][0])
@@ -227,6 +223,27 @@ def predict_move(l1,pl) :
         for j in range(3) :
             if l1[i][j]==" " :
                 poss_moves.append((i+1,j+1))
+    if l1[0][0]=="X" or l1[0][2]=="X" or l1[2][0]=="X" or l1[2][2]=="X" :
+        if len(poss_moves)>6 :
+            if l1[0][0]=="X" :
+                return 8
+            if l1[0][2]=="X" :
+                return 6
+            if l1[2][0]=="X" :
+                return 2
+            if l1[2][2]=="X" :
+                return 0
+    if len(poss_moves)>5 :
+        rr=[]
+        if l1[0][0]==" " :
+            rr.append(0)
+        if l1[2][0]==" " :
+            rr.append(6)
+        if l1[0][2]==" " :
+            rr.append(2)
+        if l1[2][2]==" " :
+            rr.append(8)
+        return (rr[math.floor(len(rr)*np.random.rand())])
     #loop to check whether a move exists by which opponent can win
     for co in poss_moves :
         gcopy=copi(l1)
