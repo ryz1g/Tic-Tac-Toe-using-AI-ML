@@ -25,7 +25,7 @@ while True :
         c1,c2=(0,0)
 
         #if it is humans turn
-        
+
         if turn==human :
             print("Enter coordiate of "+human+":")
             while True :
@@ -43,7 +43,7 @@ while True :
             game=hf.make_move(c1,c2,game,turn)
             if human=="X" :
                 turn="O"
-            else :
+            if human=="O" :
                 turn="X"
         if hf.check_win(game)[0] :
             hf.clear_board()
@@ -69,7 +69,7 @@ while True :
             game=hf.make_move(c1,c2,game,comp)
             if comp=="X" :
                 turn="O"
-            else :
+            if comp=="O" :
                 turn="X"
 
         if hf.check_win(game)[0] :
