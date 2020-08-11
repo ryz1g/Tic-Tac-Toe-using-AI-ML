@@ -247,7 +247,7 @@ def predict_move(l1,pl) :
             rr.append(2)
         if l1[2][2]==" " :
             rr.append(8)
-        return (rr[math.floor(len(rr)*np.random.rand())])
+        best_move=(rr[math.floor(len(rr)*np.random.rand())])
     #loop to check whether a move exists by which opponent can win
     for co in poss_moves :
         gcopy=copi(l1)
